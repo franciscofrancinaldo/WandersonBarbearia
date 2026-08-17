@@ -1,0 +1,512 @@
+/* ============================================
+   VARIÁVEIS DE CORES E FONTES
+   ============================================ */
+:root {
+  --cor-fundo: #a6df9f;
+  --cor-primaria: #1a1a1a;      /* preto suave */
+  --cor-destaque: #c9a227;      /* dourado */
+  --cor-texto: #333333;
+  --cor-branco: #ffffff;
+  --cor-erro: #c0392b;
+  --cor-sucesso: #27ae60;
+  --fonte-principal: "Segoe UI", Arial, sans-serif;
+  --fonte-titulo: Georgia, serif;
+}
+
+/* ============================================
+   RESET BÁSICO
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fonte-principal);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================
+   CABEÇALHO (HERO)
+   ============================================ */
+.hero {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  text-align: center;
+  padding: 40px 20px 60px;
+}
+
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero .logo-banner {
+  display: block;
+  width: min(100%, 900px);
+  max-width: 100%;
+  margin: 0 auto 28px;
+  border-radius: 12px;
+}
+
+/* Título em texto (caso queira usá-lo sem a imagem)
+.hero .logo {
+  font-family: var(--fonte-titulo);
+  font-size: 2.5rem;
+  color: var(--cor-destaque);
+} */
+
+.hero .slogan {
+  margin: 12px 0 24px;
+  font-size: 1.1rem;
+}
+
+/* Indicador Aberto/Fechado (atualizado via JavaScript) */
+.status-loja {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.status-loja::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #888;
+}
+
+.status-loja.aberto {
+  color: #7df2a8;
+}
+
+.status-loja.aberto::before {
+  background-color: #27ae60;
+  animation: pulsar 1.5s infinite;
+}
+
+.status-loja.fechado {
+  color: #f29b8d;
+}
+
+.status-loja.fechado::before {
+  background-color: #c0392b;
+}
+
+@keyframes pulsar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@media (max-width: 640px) {
+  .status-loja {
+    font-size: 0.85rem;
+    padding: 6px 16px;
+  }
+}
+
+/* ============================================
+   BOTÕES
+   ============================================ */
+.btn {
+  display: inline-block;
+  background-color: var(--cor-destaque);
+  color: var(--cor-primaria);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #b08d1e;
+}
+
+/* ============================================
+   SEÇÕES
+   ============================================ */
+section {
+  padding: 50px 0;
+}
+
+h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* ============================================
+   CARDS DE SERVIÇOS (FLEXBOX)
+   ============================================ */
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: var(--cor-branco);
+  border-radius: 10px;
+  padding: 24px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid var(--cor-primaria);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card .preco {
+  display: block;
+  margin-top: 14px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--cor-destaque);
+}
+
+.card.destaque {
+  border-top-color: var(--cor-destaque);
+  background-color: #fffdf3;
+}
+
+/* ============================================
+   GALERIA DE CORTES (CSS GRID)
+   ============================================ */
+.galeria {
+  background-color: var(--cor-branco);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.grade-galeria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.foto {
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s;
+}
+
+.foto:hover {
+  transform: scale(1.03);
+}
+
+.foto img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.foto figcaption {
+  background-color: var(--cor-primaria);
+  color: var(--cor-destaque);
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 640px) {
+  .grade-galeria {
+    grid-template-columns: 1fr;
+  }
+
+  .foto img {
+    height: 220px;
+  }
+}
+
+/* ============================================
+   ADMIN: ADICIONAR FOTOS À GALERIA
+   ============================================ */
+.admin-fotos {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px dashed #ddd;
+  text-align: center;
+}
+
+.admin-fotos h3 {
+  margin-bottom: 4px;
+  color: var(--cor-texto);
+}
+
+#formFoto {
+  max-width: 480px;
+  margin: 20px auto 0;
+  text-align: left;
+}
+
+#formFoto label {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+#formFoto input[type="file"],
+#formFoto input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+#formFoto .erro {
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Botão de remover em fotos dinâmicas */
+.foto-dinamica {
+  position: relative;
+}
+
+.btn-remover-foto {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(192, 57, 43, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  line-height: 26px;
+  padding: 0;
+  transition: background-color 0.2s;
+}
+
+.btn-remover-foto:hover {
+  background-color: var(--cor-erro);
+}
+
+/* ============================================
+   FORMULÁRIO DE AGENDAMENTO
+   ============================================ */
+.obs {
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.btn-whatsapp {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 500px;
+  margin: 16px auto 0;
+  background-color: #25d366;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebe57;
+}
+
+.agendamento {
+  background-color: var(--cor-branco);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--cor-destaque);
+}
+
+input.erro {
+  border-color: var(--cor-erro);
+}
+
+.erro {
+  color: var(--cor-erro);
+  font-size: 0.85rem;
+  min-height: 18px;
+}
+
+form .btn {
+  margin-top: 20px;
+}
+
+.mensagem {
+  text-align: center;
+  margin-top: 14px;
+  font-weight: bold;
+  min-height: 24px;
+}
+
+.mensagem.sucesso { color: var(--cor-sucesso); }
+.mensagem.erro-msg { color: var(--cor-erro); }
+
+.lista-itens .btn-whatsapp-item {
+  background: none;
+  border: 1px solid #25d366;
+  color: #1ebe57;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-right: 6px;
+}
+
+.lista-itens .btn-whatsapp-item:hover {
+  background-color: #25d366;
+  color: #ffffff;
+}
+
+/* ============================================
+   LISTA DE AGENDAMENTOS
+   ============================================ */
+.lista-itens {
+  list-style: none;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.lista-itens li {
+  background-color: var(--cor-branco);
+  border-left: 5px solid var(--cor-destaque);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.lista-itens li span.info {
+  font-size: 0.95rem;
+}
+
+.btn-cancelar {
+  background: none;
+  border: 1px solid var(--cor-erro);
+  color: var(--cor-erro);
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-cancelar:hover {
+  background-color: var(--cor-erro);
+  color: var(--cor-branco);
+}
+
+.btn-limpar {
+  display: block;
+  margin: 16px auto 0;
+  background: none;
+  color: var(--cor-texto);
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-limpar:hover {
+  background-color: #e8e3d8;
+}
+
+/* ============================================
+   RODAPÉ
+   ============================================ */
+footer {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  text-align: center;
+  padding: 24px 20px;
+  margin-top: 30px;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   RESPONSIVIDADE (MOBILE)
+   ============================================ */
+@media (max-width: 640px) {
+  .hero .logo {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .agendamento {
+    padding: 20px;
+  }
+
+  .lista-itens li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

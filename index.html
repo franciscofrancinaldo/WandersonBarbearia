@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wanderson Barbearia</title>
+  <!-- Vincula o arquivo CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho / banner principal (hero) -->
+  <header class="hero">
+    <div class="container">
+      <img src="img/logo-banner.jpg" alt="wanderson Barbearia" class="logo-banner">
+      <p id="statusLoja" class="status-loja">Verificando horário de funcionamento...</p>
+      <p class="slogan">Estilo é cuidado. Confiança é tudo.</p>
+      <a href="#agendamento" class="btn">Agendar agora</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Seção de serviços -->
+    <section class="servicos">
+      <h2>Nossos Serviços</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Corte de Cabelo</h3>
+          <p>Corte clássico ou moderno com acabamento perfeito.</p>
+          <span class="preco">R$ 40,00</span>
+        </div>
+        <div class="card">
+          <h3>Barba</h3>
+          <p>Barba desenhada, toalha quente e produtos premium.</p>
+          <span class="preco">R$ 30,00</span>
+        </div>
+        <div class="card destaque">
+          <h3>Combo Corte + Barba</h3>
+          <p>O pacote completo com preço especial.</p>
+          <span class="preco">R$ 60,00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de galeria de cortes -->
+    <section class="galeria">
+      <h2>Galeria de Cortes</h2>
+      <p class="obs">Confira alguns dos nossos trabalhos e escolha o seu estilo.</p>
+      <div class="grade-galeria">
+        <figure class="foto">
+          <img src="img/corte1.jpg" alt="Corte texturizado com degradê">
+          <figcaption>Corte texturizado com degradê</figcaption>
+        </figure>
+        <figure class="foto">
+          <img src="img/corte2.jpg" alt="Barba desenhada com toalha quente">
+          <figcaption>Barba desenhada</figcaption>
+        </figure>
+        <figure class="foto">
+          <img src="img/corte3.jpg" alt="Pompadour clássico penteado para trás">
+          <figcaption>Pompadour clássico</figcaption>
+        </figure>
+        <figure class="foto">
+          <img src="img/corte4.jpg" alt="Corte cacheado com alinhamento de linha">
+          <figcaption>Cacheado com lineup</figcaption>
+        </figure>
+      </div>
+
+      <!-- Fotos adicionadas pelo admin do site (via JavaScript) -->
+      <div id="gradeFotosDinamicas" class="grade-galeria"></div>
+
+      <!-- Formulário para adicionar novas fotos -->
+      <div class="admin-fotos">
+        <h3>Adicionar nova foto</h3>
+        <p class="obs">Adicione fotos dos seus trabalhos para divulgar na galeria.</p>
+        <form id="formFoto">
+          <label for="fotoArquivo">Escolher foto</label>
+          <input type="file" id="fotoArquivo" accept="image/*">
+          <span class="erro" id="erroFoto"></span>
+
+          <label for="fotoLegenda">Legenda</label>
+          <input type="text" id="fotoLegenda" placeholder="Ex: Corte degrade nas laterais">
+          <span class="erro" id="erroFotoLegenda"></span>
+
+          <button type="submit" class="btn">Adicionar foto</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Seção de agendamento -->
+    <section class="agendamento" id="agendamento">
+      <h2>Agende seu Horário</h2>
+      <p class="obs">Ao confirmar, você pode enviar o agendamento diretamente pelo WhatsApp.</p>
+      <form id="formAgendamento">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" placeholder="Seu nome">
+        <span class="erro" id="erroNome"></span>
+
+        <label for="telefone">Telefone</label>
+        <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+        <span class="erro" id="erroTelefone"></span>
+
+        <label for="servico">Serviço</label>
+        <select id="servico">
+          <option value="">Selecione um serviço</option>
+          <option value="corte" data-preco="40">Corte de Cabelo - R$ 40,00</option>
+          <option value="barba" data-preco="30">Barba - R$ 30,00</option>
+          <option value="combo" data-preco="60">Combo Corte + Barba - R$ 60,00</option>
+        </select>
+        <span class="erro" id="erroServico"></span>
+
+        <label for="data">Data</label>
+        <input type="date" id="data">
+        <span class="erro" id="erroData"></span>
+
+        <label for="hora">Horário</label>
+        <select id="hora">
+          <option value="">Selecione um horário</option>
+          <option value="09:00">09:00</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+        </select>
+        <span class="erro" id="erroHora"></span>
+
+        <button type="submit" class="btn">Confirmar Agendamento</button>
+      </form>
+      <p id="mensagem" class="mensagem"></p>
+      <a id="btnWhatsapp" class="btn-whatsapp" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+    </section>
+
+    <!-- Seção da lista de agendamentos -->
+    <section class="lista">
+      <h2>Meus Agendamentos</h2>
+      <ul id="listaAgendamentos" class="lista-itens">
+        <!-- Os agendamentos aparecerão aqui via JavaScript -->
+      </ul>
+      <p id="listaVazia">Nenhum agendamento ainda. Agende o seu!</p>
+      <button id="btnLimpar" class="btn-limpar">Limpar todos os agendamentos</button>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Wanderson Barbearia - Todos os direitos reservados.</p>
+      <p>Desenvolvido por FSsoluções digitais.</p>
+    </div>
+  </footer>
+
+  <!-- Vincula o arquivo JavaScript externo -->
+  <script src="script.js"></script>
+</body>
+</html>
